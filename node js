@@ -1,0 +1,60 @@
+// Digital Wallet Application - Node.js
+
+let balance = 1000;
+let transactions = [];
+
+function showBalance() {
+    console.log("\nCurrent Balance: ₹" + balance);
+}
+
+function addMoney(amount) {
+    if (amount <= 0) {
+        console.log("Invalid amount!");
+        return;
+    }
+
+    balance += amount;
+    transactions.push(`Added ₹${amount}`);
+    console.log(`₹${amount} added successfully.`);
+}
+
+function withdrawMoney(amount) {
+    if (amount <= 0) {
+        console.log("Invalid amount!");
+        return;
+    }
+
+    if (amount > balance) {
+        console.log("Insufficient Balance!");
+        return;
+    }
+
+    balance -= amount;
+    transactions.push(`Withdrawn ₹${amount}`);
+    console.log(`₹${amount} withdrawn successfully.`);
+}
+
+function showTransactions() {
+    console.log("\n=== Transaction History ===");
+
+    if (transactions.length === 0) {
+        console.log("No transactions found.");
+        return;
+    }
+
+    transactions.forEach((item, index) => {
+        console.log(`${index + 1}. ${item}`);
+    });
+}
+
+// Demo Transactions
+console.log("===== DIGITAL WALLET APPLICATION =====");
+
+showBalance();
+
+addMoney(500);
+withdrawMoney(200);
+addMoney(1000);
+
+showBalance();
+showTransactions();
