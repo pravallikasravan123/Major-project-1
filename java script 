@@ -1,0 +1,37 @@
+// Digital Wallet Application
+
+let balance = 1000;
+
+console.log("===== DIGITAL WALLET =====");
+console.log("Initial Balance: ₹" + balance);
+
+function addMoney(amount) {
+    if (amount > 0) {
+        balance += amount;
+        console.log(`Added ₹${amount}`);
+        console.log(`Current Balance: ₹${balance}`);
+    } else {
+        console.log("Invalid amount!");
+    }
+}
+
+function withdrawMoney(amount) {
+    if (amount <= 0) {
+        console.log("Invalid amount!");
+    } else if (amount > balance) {
+        console.log("Insufficient Balance!");
+    } else {
+        balance -= amount;
+        console.log(`Withdrawn ₹${amount}`);
+        console.log(`Current Balance: ₹${balance}`);
+    }
+}
+
+function checkBalance() {
+    console.log(`Available Balance: ₹${balance}`);
+}
+
+// Sample Transactions
+addMoney(500);
+withdrawMoney(200);
+checkBalance();
